@@ -1,0 +1,59 @@
+{
+  "tickets": [
+    {
+      "id": "1",
+      "title": "Network Connectivity Issue",
+      "description": "Users unable to connect to the internal network",
+      "status": "open",
+      "priority": "high",
+      "createdById": "2",
+      "assignedToId": "2",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": "2",
+      "title": "Email Service Down",
+      "description": "Company-wide email service is not responding",
+      "status": "in_progress",
+      "priority": "critical",
+      "createdById": "1",
+      "assignedToId": "2",
+      "createdAt": "2024-01-02T10:00:00Z",
+      "updatedAt": "2024-01-02T11:30:00Z"
+    },
+    {
+      "id": "3",
+      "title": "Printer Configuration",
+      "description": "Need to set up new printer in marketing department",
+      "status": "pending",
+      "priority": "low",
+      "createdById": "1",
+      "assignedToId": "2",
+      "createdAt": "2024-01-03T09:00:00Z",
+      "updatedAt": "2024-01-03T09:00:00Z"
+    },
+    {
+      "id": "4",
+      "title": "Software License Renewal",
+      "description": "Adobe Creative Suite licenses need renewal",
+      "status": "closed",
+      "priority": "medium",
+      "createdById": "2",
+      "assignedToId": "1",
+      "createdAt": "2024-01-01T15:00:00Z",
+      "updatedAt": "2024-01-04T16:45:00Z"
+    },
+    {
+      "id": "5",
+      "title": "Server Backup Failure",
+      "description": "Daily backup job failed on main database server",
+      "status": "open",
+      "priority": "high",
+      "createdById": "1",
+      "assignedToId": "2",
+      "createdAt": "2024-01-05T03:00:00Z",
+      "updatedAt": "2024-01-05T03:00:00Z"
+    }
+  ]
+}

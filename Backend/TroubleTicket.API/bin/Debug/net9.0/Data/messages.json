@@ -1,0 +1,22 @@
+{
+  "messages": [
+    {
+      "id": "1",
+      "ticketId": "1",
+      "senderId": "2",
+      "content": "Initial investigation of the issue has begun.",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "isInternal": false,
+      "attachments": []
+    },
+    {
+      "id": "2",
+      "ticketId": "1",
+      "senderId": "1",
+      "content": "Please provide an update on the progress.",
+      "createdAt": "2024-01-01T01:00:00Z",
+      "isInternal": false,
+      "attachments": []
+    }
+  ]
+}

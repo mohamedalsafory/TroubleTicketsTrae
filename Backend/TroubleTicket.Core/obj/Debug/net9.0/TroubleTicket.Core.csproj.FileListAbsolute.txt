@@ -1,0 +1,11 @@
+e:\Trae\TroubleTicket\Backend\TroubleTicket.Core\obj\Debug\net9.0\TroubleTicket.Core.GeneratedMSBuildEditorConfig.editorconfig
+e:\Trae\TroubleTicket\Backend\TroubleTicket.Core\obj\Debug\net9.0\TroubleTicket.Core.AssemblyInfoInputs.cache
+e:\Trae\TroubleTicket\Backend\TroubleTicket.Core\obj\Debug\net9.0\TroubleTicket.Core.AssemblyInfo.cs
+e:\Trae\TroubleTicket\Backend\TroubleTicket.Core\obj\Debug\net9.0\TroubleTicket.Core.csproj.CoreCompileInputs.cache
+e:\Trae\TroubleTicket\Backend\TroubleTicket.Core\bin\Debug\net9.0\TroubleTicket.Core.deps.json
+E:\Trae\TroubleTicket\Backend\TroubleTicket.Core\bin\Debug\net9.0\TroubleTicket.Core.dll
+E:\Trae\TroubleTicket\Backend\TroubleTicket.Core\bin\Debug\net9.0\TroubleTicket.Core.pdb
+E:\Trae\TroubleTicket\Backend\TroubleTicket.Core\obj\Debug\net9.0\TroubleTicket.Core.dll
+E:\Trae\TroubleTicket\Backend\TroubleTicket.Core\obj\Debug\net9.0\refint\TroubleTicket.Core.dll
+E:\Trae\TroubleTicket\Backend\TroubleTicket.Core\obj\Debug\net9.0\TroubleTicket.Core.pdb
+e:\Trae\TroubleTicket\Backend\TroubleTicket.Core\obj\Debug\net9.0\ref\TroubleTicket.Core.dll

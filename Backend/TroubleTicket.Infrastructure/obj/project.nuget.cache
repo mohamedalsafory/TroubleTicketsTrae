@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "MHIPz47+F7E=",
+  "success": true,
+  "projectFilePath": "E:\\Trae\\TroubleTicket\\Backend\\TroubleTicket.Infrastructure\\TroubleTicket.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\msafory.MMC\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.4\\microsoft.extensions.configuration.abstractions.9.0.4.nupkg.sha512",
+    "C:\\Users\\msafory.MMC\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.4\\microsoft.extensions.primitives.9.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

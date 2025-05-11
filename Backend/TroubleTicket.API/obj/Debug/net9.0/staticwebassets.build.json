@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "CZ4s4k5XCI1UG/Vc7tcmFCPobm5zDZcphxY1euN7JQE=",
+  "Source": "TroubleTicket.API",
+  "BasePath": "_content/TroubleTicket.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
