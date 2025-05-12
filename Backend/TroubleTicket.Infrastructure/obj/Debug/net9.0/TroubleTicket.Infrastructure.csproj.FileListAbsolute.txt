@@ -13,3 +13,4 @@ E:\Trae\TroubleTicket\Backend\TroubleTicket.Infrastructure\obj\Debug\net9.0\Trou
 E:\Trae\TroubleTicket\Backend\TroubleTicket.Infrastructure\obj\Debug\net9.0\refint\TroubleTicket.Infrastructure.dll
 E:\Trae\TroubleTicket\Backend\TroubleTicket.Infrastructure\obj\Debug\net9.0\TroubleTicket.Infrastructure.pdb
 E:\Trae\TroubleTicket\Backend\TroubleTicket.Infrastructure\obj\Debug\net9.0\ref\TroubleTicket.Infrastructure.dll
+E:\Trae\TroubleTicket\Backend\TroubleTicket.Infrastructure\obj\Debug\net9.0\TroubleTicket.Infrastructure.sourcelink.json

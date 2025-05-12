@@ -55,3 +55,4 @@ E:\Trae\TroubleTicket\Backend\TroubleTicket.API\obj\Debug\net9.0\ref\TroubleTick
 E:\Trae\TroubleTicket\Backend\TroubleTicket.API\bin\Debug\net9.0\Data\messages.json
 E:\Trae\TroubleTicket\Backend\TroubleTicket.API\bin\Debug\net9.0\Data\tickets.json
 E:\Trae\TroubleTicket\Backend\TroubleTicket.API\bin\Debug\net9.0\Data\users.json
+E:\Trae\TroubleTicket\Backend\TroubleTicket.API\obj\Debug\net9.0\TroubleTicket.API.sourcelink.json
