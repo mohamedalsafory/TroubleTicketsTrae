@@ -1,45 +1,46 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TroubleTicket.Core.Entities;
 using TroubleTicket.Core.Interfaces;
 
 namespace TroubleTicket.API.Controllers;
 
-[Authorize]
 public class MessagesController : BaseController
 {
     private readonly IJsonStorageService _storage;
-    private readonly string TicketsFileName;
+    private readonly string FileName;
 
     public MessagesController(IJsonStorageService storage)
     {
         _storage = storage;
-        TicketsFileName = Path.Combine(Directory.GetCurrentDirectory(), "Data", "messages.json");
+        FileName = Path.Combine(Directory.GetCurrentDirectory(), "Data", "messages.json");
     }
 
     [HttpGet("tickets/{ticketId}/messages")]
     public async Task<IActionResult> GetTicketMessages(string ticketId)
     {
-        var tickets = await _storage.ReadOrCreateAsync<List<Ticket>>(TicketsFileName);
-        var ticket = tickets.FirstOrDefault(t => t.Id == ticketId);
-
-        if (ticket == null)
+        try
         {
-            return NotFound();
+            var allMessages = await _storage.ReadOrCreateAsync<List<Message>>(FileName);
+            var messages = allMessages?.Where(m => m.TicketId == ticketId).ToList();
+            
+            if (messages == null || !messages.Any())
+            {
+                return Ok(new List<Message>());
+            }
+            
+            return Ok(messages);
         }
-
-        if (!IsAdmin() && !IsServiceAgent() && ticket.CreatedById != GetUserId())
+        catch (Exception ex)
         {
-            return Forbid();
+            Console.WriteLine($"Error getting messages: {ex}");
+            return StatusCode(500, "Internal server error");
         }
-
-        return Ok(ticket.Messages);
     }
 
     [HttpPost("tickets/{ticketId}/messages")]
     public async Task<IActionResult> AddMessage(string ticketId, [FromBody] Message message)
     {
-        var tickets = await _storage.ReadOrCreateAsync<List<Ticket>>(TicketsFileName);
+        var tickets = await _storage.ReadOrCreateAsync<List<Ticket>>(Path.Combine(Directory.GetCurrentDirectory(), "Data", "messages.json"));
         var ticket = tickets.FirstOrDefault(t => t.Id == ticketId);
 
         if (ticket == null)
@@ -60,7 +61,7 @@ public class MessagesController : BaseController
         ticket.Messages.Add(message);
         ticket.UpdatedAt = DateTime.UtcNow;
 
-        await _storage.WriteAsync(TicketsFileName, tickets);
+        await _storage.WriteAsync(Path.Combine(Directory.GetCurrentDirectory(), "Data", "messages.json"), tickets);
 
         return Ok(message);
     }

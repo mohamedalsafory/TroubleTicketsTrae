@@ -20,22 +20,6 @@ var jwtIssuer = builder.Configuration["Jwt:Issuer"] ??
 var jwtAudience = builder.Configuration["Jwt:Audience"] ?? 
     throw new InvalidOperationException("JWT Audience is not configured");
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = jwtIssuer,
-            ValidAudience = jwtAudience,
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(jwtKey))
-        };
-    });
-
 // Add CORS
 builder.Services.AddCors(options =>
 {
@@ -106,8 +90,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
-app.UseAuthentication();
-app.UseAuthorization();
 
 app.MapControllers();
 

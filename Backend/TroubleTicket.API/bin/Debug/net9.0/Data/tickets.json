@@ -1,31 +1,41 @@
-{
-  "tickets": [
-    {
-      "Id": "1",
-      "Title": "333",
-      "Description": "223",
-      "CategoryId": "",
-      "Priority": "medium",
-      "Status": "open",
-      "CreatedById": "",
-      "AssignedToId": null,
-      "CreatedAt": "2025-05-11T11:25:07.2034711Z",
-      "UpdatedAt": "2025-05-11T11:25:07.2034713Z",
-      "Messages": []
-    },
-    
-    {
-      "Id": "f9fa7e30f17549a89d0f6da328abf03f",
-      "Title": "fffff",
-      "Description": "rrr",
-      "CategoryId": "",
-      "Priority": "medium",
-      "Status": "open",
-      "CreatedById": "",
-      "AssignedToId": null,
-      "CreatedAt": "2025-05-11T11:25:07.2035817Z",
-      "UpdatedAt": "2025-05-11T11:25:07.2035818Z",
-      "Messages": []
-    }
-  ]
-}
+[
+  {
+    "Id": "1",
+    "Title": "333",
+    "Description": "223",
+    "CategoryId": "",
+    "Priority": "medium",
+    "Status": "open",
+    "CreatedById": "",
+    "AssignedToId": null,
+    "CreatedAt": "2025-05-11T11:25:07.2034711Z",
+    "UpdatedAt": "2025-05-11T11:25:07.2034713Z",
+    "Messages": []
+  },
+  {
+    "Id": "2",
+    "Title": "fffff",
+    "Description": "rrr",
+    "CategoryId": "",
+    "Priority": "medium",
+    "Status": "open",
+    "CreatedById": "",
+    "AssignedToId": null,
+    "CreatedAt": "2025-05-11T11:25:07.2034711Z",
+    "UpdatedAt": "2025-05-11T11:25:07.2034713Z",
+    "Messages": []
+  },
+  {
+    "Id": "3",
+    "Title": "Ticket1",
+    "Description": "111",
+    "CategoryId": "",
+    "Priority": "medium",
+    "Status": "open",
+    "CreatedById": "",
+    "AssignedToId": null,
+    "CreatedAt": "2025-05-12T08:34:45.9706993Z",
+    "UpdatedAt": "2025-05-12T08:34:45.9706993Z",
+    "Messages": []
+  }
+]

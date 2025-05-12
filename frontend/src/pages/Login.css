@@ -1,4 +1,7 @@
 .login-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,6 +17,37 @@
   width: 100%;
   max-width: 400px;
   text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.form-control {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(72,149,239,0.2);
 }
 
 .logo {

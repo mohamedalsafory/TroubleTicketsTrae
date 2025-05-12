@@ -15,19 +15,41 @@ public class UsersController : BaseController
     private readonly IJsonStorageService _storage;
     private readonly IConfiguration _configuration;
     private readonly string FileName;
+    private bool _usersInitialized = false;
 
     public UsersController(IJsonStorageService storage, IConfiguration configuration)
     {
         _storage = storage;
         _configuration = configuration;
         FileName = Path.Combine(Directory.GetCurrentDirectory(), "Data", "users.json");
+        // Initialize users synchronously
+        InitializeUsersAsync().GetAwaiter().GetResult();
+    }
+
+    private async Task InitializeUsersAsync()
+    {
+        if (_usersInitialized) return;
+        
+        var users = await _storage.ReadOrCreateAsync<List<User>>(FileName);
+        if (!users.Any())
+        {
+            users.Add(new User 
+            { 
+                Id = Guid.NewGuid().ToString(),
+                Name = "Admin",
+                Email = "admin@example.com",
+                Role = "admin",
+                Password = "admin123"
+            });
+            await _storage.WriteAsync(FileName, users);
+        }
+        _usersInitialized = true;
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
         var users = await _storage.ReadOrCreateAsync<List<User>>(FileName);
-
         if (users.Any(u => u.Email == request.Email))
         {
             return BadRequest("Email already exists");
@@ -35,16 +57,17 @@ public class UsersController : BaseController
 
         var user = new User
         {
+            Id = Guid.NewGuid().ToString(),
             Email = request.Email,
             Name = request.Name,
-            PasswordHash = HashPassword(request.Password),
-            Role = "client" // Default role
+            Password = request.Password,
+            Role = "client"
         };
 
         users.Add(user);
         await _storage.WriteAsync(FileName, users);
 
-        return Ok(new { token = GenerateJwtToken(user) });
+        return Ok(new { user.Id, user.Name, user.Email, user.Role });
     }
 
     [HttpPost("login")]
@@ -52,16 +75,16 @@ public class UsersController : BaseController
     {
         var users = await _storage.ReadOrCreateAsync<List<User>>(FileName);
         var user = users.FirstOrDefault(u => u.Email == request.Email);
-
-        if (user == null || !VerifyPassword(request.Password, user.PasswordHash))
+        
+        if (user == null || user.Password != request.Password)
         {
-            return Unauthorized();
+            return Unauthorized("Invalid email or password");
         }
-
+        
         user.LastLogin = DateTime.UtcNow;
         await _storage.WriteAsync(FileName, users);
-
-        return Ok(new { token = GenerateJwtToken(user) });
+        
+        return Ok(new { user.Id, user.Name, user.Email, user.Role });
     }
 
     [Authorize(Roles = "admin")]
@@ -70,18 +93,6 @@ public class UsersController : BaseController
     {
         var users = await _storage.ReadOrCreateAsync<List<User>>(FileName);
         return Ok(users);
-    }
-
-    private string HashPassword(string password)
-    {
-        using var sha256 = SHA256.Create();
-        var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-        return Convert.ToBase64String(hashedBytes);
-    }
-
-    private bool VerifyPassword(string password, string hash)
-    {
-        return HashPassword(password) == hash;
     }
 
     private string GenerateJwtToken(User user)

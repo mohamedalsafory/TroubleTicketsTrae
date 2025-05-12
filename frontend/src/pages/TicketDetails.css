@@ -1,0 +1,92 @@
+.error {
+  color: #dc3545;
+  padding: 15px;
+  margin: 20px 0;
+  border: 1px solid #f5c6cb;
+  background-color: #f8d7da;
+  border-radius: 4px;
+}
+
+.ticket-details {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.ticket-status {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.status-open {
+  background-color: var(--accent);
+  color: white;
+}
+
+.ticket-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.ticket-meta-item {
+  background: var(--gray-light);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.ticket-details h2 {
+  color: #4f46e5;
+  margin-bottom: 15px;
+}
+
+.message-list {
+  margin-top: 2rem;
+}
+
+.message {
+  background: var(--light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--accent);
+}
+
+.message-meta {
+  display: flex;
+  gap: 1rem;
+  color: var(--gray-dark);
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.message-content {
+  line-height: 1.6;
+}
+
+.ticket-properties {
+  margin: 1.5rem 0;
+}
+
+.ticket-description {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: var(--gray-light);
+  border-radius: 6px;
+  line-height: 1.6;
+}

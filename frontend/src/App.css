@@ -1,3 +1,38 @@
+:root {
+  /* Primary blues */
+  --primary: #1a4fb3;
+  --primary-light: #2563eb;
+  --primary-dark: #1e3b8a;
+  
+  /* Secondary colors */
+  --secondary: #1a56db;
+  --accent: #3b82f6;
+  
+  /* Neutrals */
+  --light: #f9fafb;
+  --dark: #111827;
+  --gray-light: #f3f4f6;
+  --gray-medium: #d1d5db;
+  --gray-dark: #6b7280;
+  
+  /* System colors */
+  --success: #0e9f6e;
+  --warning: #f79009;
+  --danger: #f05252;
+  
+  /* Opacities */
+  --primary-opacity-10: rgba(26, 86, 219, 0.1);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light);
+  color: var(--dark);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +70,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.main-content {
+  min-height: calc(100vh - 120px); /* 60px header + 60px footer */
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }

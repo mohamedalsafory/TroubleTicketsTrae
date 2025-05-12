@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TroubleTicket.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+042c1dce8bff5f101c679c7daf21e2a5572ae62e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+689f5d7414cd17777ada9b8dab1c1d5fbedc4cc1")]
 [assembly: System.Reflection.AssemblyProductAttribute("TroubleTicket.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TroubleTicket.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

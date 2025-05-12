@@ -1,0 +1,142 @@
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0.9;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-open {
+  background-color: var(--success);
+  color: white;
+}
+
+.status-pending {
+  background-color: var(--warning);
+  color: var(--dark);
+}
+
+.status-closed {
+  background-color: var(--gray-medium);
+  color: var(--dark);
+}
+
+/* Priority indicators */
+.priority-high {
+  color: var(--danger);
+}
+
+.priority-medium {
+  color: var(--warning);
+}
+
+.priority-low {
+  color: var(--success);
+}
+
+/* Label-Value Pairs */
+.label-value {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.label-value:hover::before {
+  background: var(--primary);
+  width: 5px;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.label-value:hover .label-value__value {
+  background: var(--primary-opacity-10);
+}
+
+.label-value__label {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.label-value__value {
+  color: var(--dark);
+  opacity: 0.9;
+  word-break: break-word;
+}
+
+.label-value__value--highlight {
+  color: var(--primary-dark);
+  opacity: 1;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+  
+  .ticket-details {
+    padding: 1rem;
+  }
+  
+  .login-container {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

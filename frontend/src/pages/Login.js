@@ -1,65 +1,58 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    
     try {
-      const response = await axios.post('http://localhost:5254/api/users/login', { email, password });
-      localStorage.setItem('token', response.data.token);
+      const response = await axios.post('http://localhost:5254/api/users/login', {
+        email: formData.email,
+        password: formData.password
+      });
+
+      localStorage.setItem('user', JSON.stringify(response.data));
       navigate('/tickets');
+      
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      setError(err.response?.data || 'Login failed');
+      console.error('Login error:', err);
     }
   };
 
   return (
     <div className="login-container">
-      <div className="login-card">
-        <h2>Trouble Ticket System</h2>
-        <div className="logo">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L3 7L12 12L21 7L12 2Z" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M3 17L12 22L21 17" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M3 12L12 17L21 12" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-        
+      <form onSubmit={handleSubmit} className="login-form">
         {error && <div className="error-message">{error}</div>}
-        
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="input-group">
-            <label>Email</label>
-            <input 
-              type="email" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
-            />
-          </div>
-          
-          <div className="input-group">
-            <label>Password</label>
-            <input 
-              type="password" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              required
-            />
-          </div>
-          
-          <button type="submit" className="login-button">Sign In</button>
-        </form>
-      </div>
+        <div className="input-group">
+          <label>Email</label>
+          <input 
+            type="email" 
+            value={formData.email}
+            onChange={(e) => setFormData({...formData, email: e.target.value})}
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div className="input-group">
+          <label>Password</label>
+          <input
+            type="password"
+            value={formData.password}
+            onChange={(e) => setFormData({...formData, password: e.target.value})}
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <button type="submit" className="login-button">Sign In</button>
+      </form>
     </div>
   );
 };

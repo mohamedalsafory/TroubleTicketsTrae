@@ -46,13 +46,14 @@ public class JsonStorageService : IJsonStorageService
 
     public async Task<T> ReadOrCreateAsync<T>(string fileName) where T : new()
     {
-        var data = await ReadAsync<T>(fileName);
-        if (data == null)
+        try
         {
-            data = new T();
-            await WriteAsync(fileName, data);
+            return await ReadAsync<T>(fileName) ?? new T();
         }
-        return data;
+        catch (JsonException)
+        {
+            return new T();
+        }
     }
 
     private string GetFilePath(string fileName)

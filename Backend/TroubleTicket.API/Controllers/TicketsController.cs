@@ -22,49 +22,53 @@ public class TicketsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var response = await _storage.ReadOrCreateAsync<TicketResponse>(FileName);
-        
-        // Debugging output
-        Console.WriteLine($"File path: {FileName}");
-        Console.WriteLine($"Raw JSON content: {System.IO.File.ReadAllText(FileName)}");
-        Console.WriteLine($"Deserialized response: {System.Text.Json.JsonSerializer.Serialize(response)}");
-        
-        if (response?.Tickets == null)
+        try
         {
-            Console.WriteLine("Tickets list is null");
-            return Ok(new List<Ticket>());
+            var tickets = await _storage.ReadOrCreateAsync<List<Ticket>>(FileName);
+            
+            if (tickets == null)
+            {
+                return Ok(new List<Ticket>());
+            }
+            
+            return Ok(tickets);
         }
-
-        // Log each ticket's details
-        foreach (var ticket in response.Tickets)
+        catch (Exception ex)
         {
-            Console.WriteLine($"Ticket ID: {ticket.Id}");
-            Console.WriteLine($"Title: {ticket.Title}");
-            Console.WriteLine($"Description: {ticket.Description}");
-            Console.WriteLine($"CategoryId: {ticket.CategoryId}");
-            Console.WriteLine("----");
+            Console.WriteLine($"Error getting tickets: {ex}");
+            return StatusCode(500, "Internal server error");
         }
-        
-        return Ok(response.Tickets);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(string id)
     {
-        var response = await _storage.ReadOrCreateAsync<TicketResponse>(FileName);
-        Console.WriteLine($"Looking for ticket with ID: {id}");
-        Console.WriteLine($"Available ticket IDs: {string.Join(", ", response.Tickets.Select(t => t.Id))}");
-        
-        var ticket = response.Tickets.FirstOrDefault(t => t.Id == id);
-        
-        if (ticket == null)
+        try
         {
-            Console.WriteLine($"Ticket with ID {id} not found");
-            return NotFound();
+            var tickets = await _storage.ReadOrCreateAsync<List<Ticket>>(FileName);
+            
+            Console.WriteLine($"Looking for ticket with ID: {id}");
+            Console.WriteLine($"Available ticket IDs: {string.Join(", ", tickets?.Select(t => t.Id) ?? Array.Empty<string>())}");
+            
+            if (tickets == null)
+            {
+                return NotFound(new { message = "No tickets found" });
+            }
+            
+            var ticket = tickets.FirstOrDefault(t => t.Id == id);
+            
+            if (ticket == null)
+            {
+                return NotFound(new { message = $"Ticket with ID {id} not found" });
+            }
+            
+            return Ok(ticket);
         }
-
-        Console.WriteLine($"Found ticket: {System.Text.Json.JsonSerializer.Serialize(ticket)}");
-        return Ok(ticket);
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error getting ticket: {ex}");
+            return StatusCode(500, new { message = "Internal server error" });
+        }
     }
 
     [HttpPost]
@@ -77,7 +81,7 @@ public class TicketsController : ControllerBase
             return BadRequest("Title and description are required");
         }
 
-        var response = await _storage.ReadOrCreateAsync<TicketResponse>(FileName);
+        var tickets = await _storage.ReadOrCreateAsync<List<Ticket>>(FileName);
         
         ticket.Id = Guid.NewGuid().ToString("N");
         ticket.CreatedAt = DateTime.UtcNow;
@@ -88,8 +92,8 @@ public class TicketsController : ControllerBase
         Console.WriteLine($"Title: {ticket.Title}");
         Console.WriteLine($"Description: {ticket.Description}");
         
-        response.Tickets.Add(ticket);
-        await _storage.WriteAsync(FileName, response);
+        tickets.Add(ticket);
+        await _storage.WriteAsync(FileName, tickets);
 
         return CreatedAtAction(nameof(Get), new { id = ticket.Id }, ticket);
     }
@@ -97,8 +101,8 @@ public class TicketsController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(string id, [FromBody] Ticket update)
     {
-        var response = await _storage.ReadOrCreateAsync<TicketResponse>(FileName);
-        var ticket = response.Tickets.FirstOrDefault(t => t.Id == id);
+        var tickets = await _storage.ReadOrCreateAsync<List<Ticket>>(FileName);
+        var ticket = tickets.FirstOrDefault(t => t.Id == id);
 
         if (ticket == null)
         {
@@ -113,7 +117,7 @@ public class TicketsController : ControllerBase
         ticket.AssignedToId = update.AssignedToId;
         ticket.UpdatedAt = DateTime.UtcNow;
 
-        await _storage.WriteAsync(FileName, response);
+        await _storage.WriteAsync(FileName, tickets);
 
         return Ok(ticket);
     }

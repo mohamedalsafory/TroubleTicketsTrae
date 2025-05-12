@@ -1,0 +1,65 @@
+.navbar {
+  background: linear-gradient(135deg, #4338ca, #4338ca);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.navbar-logo {
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: none;
+  justify-self: flex-start;
+  cursor: pointer;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+
+.nav-links {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease-out;
+  margin-left: 1.5rem;
+}
+
+.nav-links:hover {
+  color: white;
+  transform: translateY(-2px);
+  text-shadow: 0 0 8px rgba(255,255,255,0.5);
+  background-color: #4338ca;
+  border-radius: 4px;
+}
+
+.nav-auth {
+  display: flex;
+  align-items: center;
+}

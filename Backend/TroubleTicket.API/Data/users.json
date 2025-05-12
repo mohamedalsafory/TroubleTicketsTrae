@@ -1,22 +1,11 @@
-{
-  "users": [
-    {
-      "id": "1",
-      "email": "admin@example.com",
-      "name": "Admin User",
-      "password": "123",
-      "role": "admin",
-      "createdAt": "2024-01-01T00:00:00Z",
-      "lastLogin": null
-    },
-    {
-      "id": "2",
-      "email": "agent@example.com",
-      "name": "Support Agent",
-      "password": "123",
-      "role": "agent",
-      "createdAt": "2024-01-01T00:00:00Z",
-      "lastLogin": null
-    }
-  ]
-}
+[
+  {
+    "Id": "48eb338e-b31e-4113-bd0b-08664f868ca8",
+    "Email": "admin@example.com",
+    "Name": "Admin",
+    "Role": "admin",
+    "Password": "admin123",
+    "CreatedAt": "2025-05-12T09:36:27.0188784Z",
+    "LastLogin": "2025-05-12T10:33:05.3588534Z"
+  }
+]
